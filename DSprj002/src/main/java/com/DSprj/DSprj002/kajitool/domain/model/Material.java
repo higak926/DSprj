@@ -1,12 +1,10 @@
 package com.DSprj.DSprj002.kajitool.domain.model;
 
-public class RecipeListView {
+public class Material {
 
   private Long id;
 
   private String name;
-
-  private int materialCount;
 
   public Long getId() {
     return id;
@@ -22,14 +20,6 @@ public class RecipeListView {
 
   public void setName(String name) {
     this.name = name;
-  }
-
-  public int getMaterialCount() {
-    return materialCount;
-  }
-
-  public void setMaterialCount(int materialCount) {
-    this.materialCount = materialCount;
   }
 
 }
