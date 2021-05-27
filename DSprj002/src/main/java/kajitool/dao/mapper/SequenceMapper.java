@@ -1,4 +1,4 @@
-package com.DSprj.DSprj002.kajitool.dao.mapper;
+package kajitool.dao.mapper;
 
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;

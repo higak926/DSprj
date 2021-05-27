@@ -1,5 +1,6 @@
 package com.DSprj.DSprj002.kajitool.controller.error;
 
+import org.springframework.dao.OptimisticLockingFailureException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -23,5 +24,15 @@ public class AppExceptionHandler extends ResponseEntityExceptionHandler {
 	return super.handleExceptionInternal(ex, new ServiceMessage("final", "Internal error"), null, HttpStatus.INTERNAL_SERVER_ERROR, request);
   }
 
+  @ExceptionHandler(OptimisticLockingFailureException.class)
+  public ResponseEntity<Object> handleOptimisticLockingFailureException(
+	  final OptimisticLockingFailureException ex, final WebRequest request) {
+	return super.handleExceptionInternal(
+		ex,
+		new ServiceMessage("error", "Optimistic error."),
+		null,
+		HttpStatus.BAD_REQUEST,
+		request);
+  }
 
 }
