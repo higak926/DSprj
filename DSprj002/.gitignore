@@ -38,3 +38,5 @@ out/
 
 src/main/resources/application.yml
 /flyway.gradle
+/dao.gradle
+/genConfig.xml
