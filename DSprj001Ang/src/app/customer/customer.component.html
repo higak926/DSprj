@@ -1,0 +1,27 @@
+<div class="row">
+  <p>
+    CustomerService接続テスト：「{{serviceProp}}」
+  </p>
+
+  <h3>Customer一覧</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">ユーザー名</th>
+        <th scope="col">メールアドレス</th>
+        <th scope="col">電話番号</th>
+        <th scope="col">住所コード</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let c of customers">
+        <td>{{c.id}}</td>
+        <td>{{c.username}}</td>
+        <td>{{c.email}}</td>
+        <td>{{c.phoneNumber}}</td>
+        <td>{{c.postCode}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
