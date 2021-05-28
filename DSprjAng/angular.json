@@ -34,6 +34,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.sass"
             ],
             "scripts": []
@@ -71,7 +72,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "DSprjAng:build"
+            "browserTarget": "DSprjAng:build",
+            "proxyConfig": "proxy.conf.json"
           },
           "configurations": {
             "production": {
