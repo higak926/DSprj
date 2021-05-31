@@ -4,6 +4,7 @@
       <label for="id">ID：</label><br />
       <input id="id" name="id" type="text" [(ngModel)]="customer.id" #id="ngModel" required>
       <span *ngIf="id.errors?.required" class="error-msg">IDは必須です。</span>
+      <span *ngIf="duplicateValidator(customer.id)" class="error-msg">このIDは既に使用されています。</span>
     </div>
     <div>
       <label for="username">ユーザー名：</label><br />
@@ -28,7 +29,7 @@
       <span *ngIf="postCode.errors?.maxlength" class="error-msg">住所コードは7文字以内で入力してください。</span>
     </div>
     <div style="margin-top: 2rem;">
-      <input class="btn btn-primary" type="submit" value="送信" [disabled]="customerForm.invalid">
+      <input class="btn btn-primary" type="submit" value="送信" [disabled]="customerForm.invalid || duplicateValidator(customer.id)">
     </div>
   </form>
 </div>

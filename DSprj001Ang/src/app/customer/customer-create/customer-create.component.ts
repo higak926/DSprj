@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CustomerService } from 'src/app/service/customer.service';
+import { CustomerComponent } from '../customer.component';
 
 @Component({
   selector: 'app-customer-create',
@@ -8,6 +10,9 @@ import { CustomerService } from 'src/app/service/customer.service';
   styleUrls: ['./customer-create.component.scss']
 })
 export class CustomerCreateComponent implements OnInit {
+
+  customers_all: any = [];
+  customersId: any = [];
 
   customer: any = {
     "id": "",
@@ -28,7 +33,25 @@ export class CustomerCreateComponent implements OnInit {
     })
   }
 
+  getAllCustomers() {
+    this.customerService.getCustomers().subscribe((customers: any) => {
+      this.customers_all = customers;
+      for (let i in customers) {
+        this.customersId.push(customers[i].id)
+      }
+    })
+  }
+
+  duplicateValidator(id: string) {
+    return this.customersId.includes(id) ? true : false;
+  }
+
   ngOnInit(): void {
+    this.getAllCustomers();
+  }
+
+  ngDoCheck(): void {
+    this.duplicateValidator(this.customer.id);
   }
 
 }

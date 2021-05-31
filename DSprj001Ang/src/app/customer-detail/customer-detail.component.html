@@ -1,0 +1,30 @@
+<form #customerForm="ngForm" (submit)="updateCustomer()" novalidate>
+  <div>
+    <p>こんにちは！Customer ID：{{customer.id}}</p>
+  </div>
+  <div>
+    <label for="username">ユーザー名：</label><br />
+    <input id="username" name="username" type="text" [(ngModel)]="customer.username" #username="ngModel" required>
+    <span *ngIf="username.errors?.required" class="error-msg">ユーザー名は必須です。</span>
+  </div>
+  <div>
+    <label for="email">メールアドレス：</label><br />
+    <input id="email" name="email" type="text" [(ngModel)]="customer.email" #email="ngModel" required email>
+    <span *ngIf="email.errors?.required" class="error-msg">メールアドレスは必須です。</span>
+    <span *ngIf="email.errors?.email" class="error-msg">メールアドレスを正しい形式で入力してください。</span>
+  </div>
+  <div>
+    <label for="phoneNumber">電話番号：</label><br />
+    <input id="phoneNumber" name="phoneNumber" type="text" [(ngModel)]="customer.phoneNumber" #phoneNumber="ngModel" required>
+    <span *ngIf="phoneNumber.errors?.required" class="error-msg">電話番号は必須です。</span>
+  </div>
+  <div>
+    <label for="postCode">住所コード：</label><br />
+    <input id="postCode" name="postCode" type="text" [(ngModel)]="customer.postCode" #postCode="ngModel" required maxlength="7">
+    <span *ngIf="postCode.errors?.required" class="error-msg">住所コードは必須です。</span>
+    <span *ngIf="postCode.errors?.maxlength" class="error-msg">住所コードは7文字以内で入力してください。</span>
+  </div>
+  <div style="margin-top: 2rem;">
+    <input class="btn btn-primary" type="submit" value="変更する" [disabled]="customerForm.invalid">
+  </div>
+</form>

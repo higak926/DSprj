@@ -13,6 +13,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { environment } from 'src/environments/environment';
 import { CounterComponent } from './counter/counter.component';
 import { ShopComponent } from './shop/shop.component';
+import { CustomerDetailComponent } from './customer-detail/customer-detail.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ShopComponent } from './shop/shop.component';
     CustomerComponent,
     CustomerCreateComponent,
     CounterComponent,
-    ShopComponent
+    ShopComponent,
+    CustomerDetailComponent
   ],
   imports: [
     environment.production ? [] : AkitaNgDevtools.forRoot(),
