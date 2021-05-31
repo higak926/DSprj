@@ -1,0 +1,26 @@
+<form [formGroup]="formGroup">
+  <div class="form-group mt-3">
+    <label>商品名</label>
+    <input type="text" class="form-control" placeholder="商品名を入力してね" formControlName="productName">
+  </div>
+  <div class="form-group mt-3">
+    <label>値段</label>
+    <input type="text" class="form-control" placeholder="値段を入力してね" formControlName="price">
+  </div>
+</form>
+<button class="btn btn-primary mt-3" (click)="addProduct()">追加</button>
+
+<table class="table mt-3">
+  <thead>
+    <tr>
+      <th>商品名</th>
+      <th>値段</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let p of allProduct$ | async">
+      <td>{{p.productName}}</td>
+      <td>{{p.price}}</td>
+    </tr>
+  </tbody>
+</table>
