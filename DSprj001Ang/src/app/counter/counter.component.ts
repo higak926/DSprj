@@ -23,4 +23,8 @@ export class CounterComponent implements OnInit {
     this.counterService.increment();
   }
 
+  clear() {
+    this.counterService.clear();
+  }
+
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CustomerService } from 'src/app/service/customer.service';
 
 @Component({
@@ -16,12 +17,14 @@ export class CustomerCreateComponent implements OnInit {
     "postCode": ""
   }
 
-  constructor(private customerService: CustomerService) { }
+  constructor(private customerService: CustomerService, private router: Router) { }
 
   addCustomer() {
-    console.log(this.customer)
     this.customerService.addCustomer(this.customer).subscribe((res) => {
-      console.log(res);
+      this.router.navigate(['customer']);
+      setTimeout(() => {
+        alert("ID：" + res.id + "のCustomerを作成しました！")
+      }, 100)
     })
   }
 

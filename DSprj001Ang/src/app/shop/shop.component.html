@@ -20,7 +20,7 @@
   <tbody>
     <tr *ngFor="let p of allProduct$ | async">
       <td>{{p.productName}}</td>
-      <td>{{p.price}}</td>
+      <td>{{p.price}} <span style="float: right;"><button class="btn btn-danger btn-sm" (click)="removeProduct(p.id)">削除する</button></span></td>
     </tr>
   </tbody>
 </table>

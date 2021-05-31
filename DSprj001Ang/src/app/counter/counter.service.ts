@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Store } from '@datorama/akita';
 import { tap } from 'rxjs/operators';
 import { CounterStore } from './counter.store';
 
@@ -15,4 +16,12 @@ export class CounterService {
       favorite: store.favorite + 1
     }));
   }
+
+  clear() {
+    this.counterStore.update(store => ({
+      ...store,
+      favorite: 0
+    }));
+  }
+
 }

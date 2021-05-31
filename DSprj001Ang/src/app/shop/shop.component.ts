@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { getEntityType } from '@datorama/akita';
+import { getEntityType, ID } from '@datorama/akita';
 import { AkitaNgFormsManager } from '@datorama/akita-ng-forms-manager';
 import { Observable } from 'rxjs';
 import { ShopQuery } from './shop.query';
@@ -38,6 +38,10 @@ export class ShopComponent implements OnInit {
 
   addProduct() {    
     this.shopService.addProduct(this.formGroup.get('productName')!.value, this.formGroup.get('price')!.value);
+  }
+
+  removeProduct(id: ID) {
+    this.shopService.removeProduct(id);
   }
 
   ngOnDestroy() {

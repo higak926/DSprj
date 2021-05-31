@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { guid } from '@datorama/akita';
+import { guid, ID } from '@datorama/akita';
 import { tap } from 'rxjs/operators';
 import { ShopStore } from './shop.store';
 
@@ -10,12 +10,22 @@ export class ShopService {
   constructor(private shopStore: ShopStore, private http: HttpClient) {
   }
 
+  /**
+   * Productを追加する
+   * 
+   * @param productName productname
+   * @param price price
+   */
   addProduct(productName: string, price: number) {
     this.shopStore.add({
       id: guid(),
       productName,
       price
     })
+  }
+
+  removeProduct(id: ID) {
+    this.shopStore.remove(id);
   }
 
   // get() {
